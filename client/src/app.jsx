@@ -1,10 +1,13 @@
-import { useState } from "preact/hooks";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
-import { HomePage } from "./pages/home";
 import { AppPage } from "./pages/app";
 
-export function App() {
-  const [authenticated, setAuthenticated] = useState(true);
+const queryClient = new QueryClient();
 
-  return <>{authenticated ? <AppPage /> : <HomePage />}</>;
+export function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AppPage />
+    </QueryClientProvider>
+  );
 }

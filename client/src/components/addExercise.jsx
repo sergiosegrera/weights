@@ -1,4 +1,7 @@
 import { useState } from "preact/hooks";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+import { createExercise } from "../api/client";
 
 import { getColors } from "../utils/colors";
 
@@ -6,11 +9,21 @@ import arrowBack from "../assets/arrow_back.svg";
 import add from "../assets/add.svg";
 
 export function AddExercise({ backHandler }) {
+  const queryClient = useQueryClient();
+
   const colors = getColors();
 
-  const [name, setName] = useState();
+  const [name, setName] = useState("");
   const [chooseColors, setChooseColors] = useState(false);
   const [color, setColor] = useState(colors[0]);
+
+  const exercises = useMutation({
+    mutationFn: createExercise,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["exercises"] });
+      setName("");
+    },
+  });
 
   return (
     <div className="flex-col gap-s">
@@ -19,19 +32,24 @@ export function AddExercise({ backHandler }) {
           src={arrowBack}
           alt="Go Back"
           className="icon"
-          onClick={() => backHandler()}
+          onClick={backHandler}
         />
         <h2 className="text-center text-s">
           {chooseColors ? "Choose a Color" : "Add an Exercise"}
         </h2>
-        <img src={add} alt="Add an exercise" className="icon" />
+        <img
+          src={add}
+          alt="Add an exercise"
+          className="icon"
+          onClick={() => exercises.mutate({ name, color: color.id })}
+        />
       </div>
       <div className="flex-row justify-space-between">
         {chooseColors ? (
           colors.map((color) => (
             <div
               key={color.name}
-              style={"background-color: " + color.color + ";"}
+              style={{ backgroundColor: color.color }}
               className="avatar"
               onClick={() => {
                 setColor(color);
@@ -51,7 +69,7 @@ export function AddExercise({ backHandler }) {
             />
             <div
               className="avatar"
-              style={"background-color: " + color.color + ";"}
+              style={{ backgroundColor: color.color }}
               onClick={() => setChooseColors(true)}
             ></div>
           </>

@@ -87,6 +87,10 @@ input, select {
     flex-shrink: 1;
 }
 
+.flex-3 {
+    flex: 3;
+}
+
 .gap-s {
     gap: 16px;
 }
@@ -148,4 +152,11 @@ input, select {
 
 .input:focus {
     outline: none;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    overflow: hidden;
 }
