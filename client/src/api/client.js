@@ -24,3 +24,7 @@ export async function createSet(set) {
     .collection("sets")
     .create({ ...set, user: "n2thn3nfai29xkw" });
 }
+
+export async function deleteSet({ id }) {
+  return await client.collection("sets").delete(id);
+}

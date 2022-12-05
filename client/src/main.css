@@ -111,6 +111,11 @@ input, select {
     width: 48px;
 }
 
+.icon-s {
+    height: 24px;
+    width: 24px;
+}
+
 .margin-r-m {
     margin-right: 32px;
 }
@@ -133,10 +138,6 @@ input, select {
     padding-bottom: 16px;
 }
 
-.card-bg-blue {
-    background-image: linear-gradient(var(--blue), transparent);
-}
-
 .input {
     flex: 1;
     display: block;
@@ -152,6 +153,11 @@ input, select {
 
 .input:focus {
     outline: none;
+}
+
+.error {
+    outline: 4px solid var(--red);
+    outline-offset: 2px;
 }
 
 .card {

@@ -1,4 +1,4 @@
-import { getColors } from "../utils/colors";
+import { getColor } from "../utils/colors";
 import { Set } from "./set";
 
 export function Card({ sets }) {
@@ -8,12 +8,12 @@ export function Card({ sets }) {
         className="padding-s"
         style={{
           backgroundImage:
-            "linear-gradient(var(--" +
-            getColors()[sets[0].expand.exercise.color].name +
-            " ), transparent)",
+            "linear-gradient(" +
+            getColor(sets[0].expand.exercise.color) +
+            ", transparent)",
         }}
       >
-        <h2>{sets[0].expand.exercise.name}</h2>
+        <h2 className="text-m">{sets[0].expand.exercise.name}</h2>
       </div>
       <div className="flex-col padding-s-x padding-s-b gap-s">
         {sets.map((set, i) => (

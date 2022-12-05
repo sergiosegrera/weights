@@ -6,6 +6,7 @@ import { Day } from "./day";
 
 import { getSets } from "../api/client";
 
+// TODO: Add isLoading conditional rendering, Add pagination (infinite scroll)
 export function Cards() {
   const [sets, setSets] = useState();
 
@@ -26,14 +27,17 @@ export function Cards() {
         }
         return result;
       }, {});
-      console.log(sets);
       setSets(sets);
     },
+    staleTime: Infinity,
   });
   return (
     <div className="flex-col margin-y-m gap-s">
-      {sets &&
-        Object.keys(sets).map((day) => <Day day={day} sets={sets[day]} />)}
+      {sets && Object.keys(sets).length > 0 ? (
+        Object.keys(sets).map((day) => <Day day={day} sets={sets[day]} />)
+      ) : (
+        <h2 className="text-s text-center">Nothing yet!</h2>
+      )}
     </div>
   );
 }

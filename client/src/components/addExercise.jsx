@@ -60,7 +60,9 @@ export function AddExercise({ backHandler }) {
         ) : (
           <>
             <input
-              className="input flex-grow margin-r-m"
+              className={`input flex-grow margin-r-m ${
+                exercises.isError ? "error" : ""
+              }`}
               type="text"
               name="exerciseName"
               id="exerciseName"
