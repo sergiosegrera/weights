@@ -2,7 +2,7 @@ import { useState } from "preact/hooks";
 
 import check from "../assets/check.svg";
 
-export function ConfirmIcon({ icon, handler }) {
+export function ConfirmIcon({ icon, handler, small = false }) {
   const [clicked, setClicked] = useState(false);
 
   return (
@@ -10,14 +10,18 @@ export function ConfirmIcon({ icon, handler }) {
       {clicked ? (
         <img
           src={check}
-          className="icon-s"
+          className={`${small ? "icon-s" : "icon-m"}`}
           onClick={() => {
             handler();
             setClicked(false);
           }}
         />
       ) : (
-        <img src={icon} className="icon-s" onClick={() => setClicked(true)} />
+        <img
+          src={icon}
+          className={`${small ? "icon-s" : "icon-m"}`}
+          onClick={() => setClicked(true)}
+        />
       )}
     </>
   );

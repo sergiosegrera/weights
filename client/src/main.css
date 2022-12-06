@@ -111,6 +111,11 @@ input, select {
     width: 48px;
 }
 
+.icon-m {
+    height: 32px;
+    width: 32px;
+}
+
 .icon-s {
     height: 24px;
     width: 24px;

@@ -17,7 +17,7 @@ export function AddSet({ backHandler }) {
     queryFn: getExercises,
     staleTime: 5000,
     onSuccess: (exercises) => {
-      setExercise(exercises[0].id);
+      exercises.length > 0 && setExercise(exercises[0].id);
     },
   });
 

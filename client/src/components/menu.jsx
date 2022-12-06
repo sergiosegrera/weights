@@ -6,6 +6,7 @@ import { AddExercise } from "./addExercise";
 import assignmentAdd from "../assets/assignment_add.svg";
 import fitnessCenter from "../assets/fitness_center.svg";
 import download from "../assets/download.svg";
+import { getSetsCSV } from "../api/client";
 
 export function Menu() {
   const [state, setState] = useState(0);
@@ -29,7 +30,7 @@ export function Menu() {
             />
           </div>
 
-          <img className="icon" src={download}></img>
+          <img className="icon" src={download} onClick={getSetsCSV}></img>
         </div>
       )}
       {state === 1 && <AddSet backHandler={goBack} />}

@@ -4,7 +4,6 @@ import deleteIcon from "../assets/delete.svg";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteSet } from "../api/client";
 
-// TODO: Add Remove set functionality
 export function Set({ number, set }) {
   const queryClient = useQueryClient();
 
@@ -31,6 +30,7 @@ export function Set({ number, set }) {
       <ConfirmIcon
         icon={deleteIcon}
         handler={() => sets.mutate({ id: set.id })}
+        small={true}
       />
     </div>
   );
