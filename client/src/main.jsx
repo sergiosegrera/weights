@@ -2,10 +2,12 @@ import { render } from "preact";
 
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 // Pages
 import { HomePage } from "./pages/home";
 import { AppPage } from "./pages/app";
+import { ErrorPage } from "./pages/error";
 
 import "normalize.css";
 import "./main.css";
@@ -17,6 +19,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
+    errorElement: <ErrorPage error={"Page not found"} />,
   },
   {
     path: "/app",
@@ -27,6 +30,7 @@ const router = createBrowserRouter([
 render(
   <QueryClientProvider client={queryClient}>
     <RouterProvider router={router} />
+    <ReactQueryDevtools initialIsOpen={false} />
   </QueryClientProvider>,
   document.getElementById("app")
 );

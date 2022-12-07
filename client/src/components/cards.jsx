@@ -5,12 +5,13 @@ import { useQuery } from "@tanstack/react-query";
 import { Day } from "./day";
 
 import { getSets } from "../api/client";
+import { Spinner } from "./utils/spinner";
 
 // TODO: Add isLoading conditional rendering, Add pagination (infinite scroll)
 export function Cards() {
   const [sets, setSets] = useState();
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["sets"],
     queryFn: getSets,
     onSuccess: (data) => {
@@ -33,7 +34,9 @@ export function Cards() {
   });
   return (
     <div className="flex-col margin-y-m gap-s">
-      {sets && Object.keys(sets).length > 0 ? (
+      {isLoading ? (
+        <Spinner />
+      ) : sets && Object.keys(sets).length > 0 ? (
         Object.keys(sets).map((day) => <Day day={day} sets={sets[day]} />)
       ) : (
         <h2 className="text-s text-center">Nothing yet!</h2>

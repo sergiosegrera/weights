@@ -13,3 +13,7 @@ export function getColors() {
 export function getColor(id) {
   return colors[id].color;
 }
+
+export function getColorName(id) {
+  return colors[id].name;
+}
