@@ -1,4 +1,6 @@
-# weights
+![logo](./client/public/logo.svg)
+
+# Weights
 
 A workout logging web application  
 Created for my personal use and to test out my full-stack skills  

@@ -3,42 +3,21 @@ migrate((db) => {
     {
       "id": "_pb_users_auth_",
       "created": "2022-12-01 22:25:55.082Z",
-      "updated": "2022-12-06 14:30:39.932Z",
+      "updated": "2022-12-08 16:23:24.982Z",
       "name": "users",
       "type": "auth",
       "system": false,
       "schema": [
         {
           "system": false,
-          "id": "users_name",
-          "name": "name",
-          "type": "text",
-          "required": true,
-          "unique": false,
-          "options": {
-            "min": null,
-            "max": null,
-            "pattern": ""
-          }
-        },
-        {
-          "system": false,
-          "id": "users_avatar",
-          "name": "avatar",
-          "type": "file",
+          "id": "w4tbz9lk",
+          "name": "avatarUrl",
+          "type": "url",
           "required": false,
           "unique": false,
           "options": {
-            "maxSelect": 1,
-            "maxSize": 5242880,
-            "mimeTypes": [
-              "image/jpg",
-              "image/jpeg",
-              "image/png",
-              "image/svg+xml",
-              "image/gif"
-            ],
-            "thumbs": null
+            "exceptDomains": null,
+            "onlyDomains": null
           }
         }
       ],
@@ -48,9 +27,9 @@ migrate((db) => {
       "updateRule": "id = @request.auth.id",
       "deleteRule": "id = @request.auth.id",
       "options": {
-        "allowEmailAuth": true,
+        "allowEmailAuth": false,
         "allowOAuth2Auth": true,
-        "allowUsernameAuth": true,
+        "allowUsernameAuth": false,
         "exceptEmailDomains": null,
         "manageRule": null,
         "minPasswordLength": 8,
@@ -61,7 +40,7 @@ migrate((db) => {
     {
       "id": "b6gaon08cj4bqfv",
       "created": "2022-12-01 22:31:05.652Z",
-      "updated": "2022-12-06 14:30:39.933Z",
+      "updated": "2022-12-08 16:30:15.145Z",
       "name": "exercises",
       "type": "base",
       "system": false,
@@ -105,17 +84,17 @@ migrate((db) => {
           }
         }
       ],
-      "listRule": "",
-      "viewRule": "",
-      "createRule": "",
+      "listRule": "@request.auth.id = user.id",
+      "viewRule": "@request.auth.id = user.id",
+      "createRule": "@request.auth.id = user.id",
       "updateRule": null,
-      "deleteRule": "",
+      "deleteRule": "@request.auth.id = user.id",
       "options": {}
     },
     {
       "id": "5fiogb70u3g8vyz",
       "created": "2022-12-01 22:34:50.561Z",
-      "updated": "2022-12-06 14:30:39.933Z",
+      "updated": "2022-12-08 16:31:13.085Z",
       "name": "sets",
       "type": "base",
       "system": false,
@@ -171,11 +150,11 @@ migrate((db) => {
           }
         }
       ],
-      "listRule": "",
-      "viewRule": "",
-      "createRule": "",
+      "listRule": "@request.auth.id = user.id",
+      "viewRule": "@request.auth.id = user.id",
+      "createRule": "@request.auth.id = user.id",
       "updateRule": null,
-      "deleteRule": "",
+      "deleteRule": "@request.auth.id = user.id",
       "options": {}
     }
   ];
