@@ -3,12 +3,34 @@ import { getColorName } from "../utils/colors";
 
 export const client = new PocketBase(import.meta.env.VITE_API_HOST || "");
 
+export function isAuthValid() {
+  return client.authStore.isValid;
+}
+
+export function authClear() {
+  client.authStore.clear();
+}
+
+export function getUserPicture() {
+  return client.authStore.model.avatarUrl;
+}
+
+export async function authRefresh() {
+  return await client.collection("users").authRefresh();
+}
+
 export async function getAuthMethods() {
   return await client.collection("users").listAuthMethods();
 }
 
-export async function authWithOAuth2(name, code) {
-  return await client.collection("users").authWithOAuth2(name, code);
+export async function authWithOAuth2(name, code, codeVerifier, redirectUrl) {
+  return await client
+    .collection("users")
+    .authWithOAuth2(name, code, codeVerifier, redirectUrl);
+}
+
+export async function updateUser(id, data) {
+  return await client.collection("users").update(id, data);
 }
 
 export async function getExercises() {
@@ -25,13 +47,13 @@ export async function getSets() {
 export async function createExercise(exercise) {
   return await client
     .collection("exercises")
-    .create({ ...exercise, user: "n2thn3nfai29xkw" });
+    .create({ ...exercise, user: client.authStore.model.id });
 }
 
 export async function createSet(set) {
   return await client
     .collection("sets")
-    .create({ ...set, user: "n2thn3nfai29xkw" });
+    .create({ ...set, user: client.authStore.model.id });
 }
 
 export async function deleteExercise({ id }) {

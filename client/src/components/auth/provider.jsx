@@ -9,7 +9,10 @@ export function Provider({ provider, redirectUrl }) {
     <a
       className="provider"
       href={provider.authUrl + redirectUrl}
-      onClick={() => set("provider", provider)}
+      onClick={() => {
+        provider.redirectUrl = redirectUrl;
+        set("provider", provider);
+      }}
     >
       {provider.name == "google" && (
         <>

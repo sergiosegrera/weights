@@ -16,13 +16,15 @@ export function Providers() {
     <div className="providers">
       {isLoading ? (
         <Spinner />
-      ) : (
+      ) : data.authProviders.length > 0 ? (
         data.authProviders.map((provider) => (
           <Provider
             provider={provider}
-            redirectUrl={"http://localhost:5173/auth"}
+            redirectUrl={window.location.href + "app"}
           />
         ))
+      ) : (
+        <h2>Sorry, it is not possible to login at the moment</h2>
       )}
     </div>
   );
