@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 
 import { AddSet } from "./addSet";
 import { AddExercise } from "./addExercise";
@@ -10,8 +10,12 @@ import { getSetsCSV } from "../api/client";
 
 export function Menu() {
   const [state, setState] = useState(0);
+  const goHome = () => setState(0);
 
-  const goBack = () => setState(0);
+  const [csv, setCsv] = useState("");
+  useEffect(async () => {
+    setCsv(await getSetsCSV());
+  }, []);
 
   return (
     <>
@@ -30,11 +34,13 @@ export function Menu() {
             />
           </div>
 
-          <img className="icon" src={download} onClick={getSetsCSV}></img>
+          <a href={csv} download="data.csv">
+            <img className="icon" src={download} />
+          </a>
         </div>
       )}
-      {state === 1 && <AddSet backHandler={goBack} />}
-      {state === 2 && <AddExercise backHandler={goBack} />}
+      {state === 1 && <AddSet backHandler={goHome} />}
+      {state === 2 && <AddExercise backHandler={goHome} />}
     </>
   );
 }
