@@ -7,10 +7,8 @@ export function HomePage() {
       <h2 className="text-l text-center margin-y-xl">
         Track your <span className="text-blue">progress</span>
       </h2>
-      <div className="margin-y-m">
-        <Providers />
-      </div>
-      <p className="text-m text-center text-grey margin-y-m">Segrera Design</p>
+      <Providers />
+      <p className="text-m text-center text-grey margin-y-xl">Segrera Design</p>
     </>
   );
 }

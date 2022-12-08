@@ -1,0 +1,20 @@
+.providers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.provider {
+  display: flex;
+  flex-direction: row;
+  padding: 18px;
+  box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  align-items: center;
+  gap: 8px;
+  color: black;
+}
+
+.provider:hover {
+  transform: scale(1.01);
+}

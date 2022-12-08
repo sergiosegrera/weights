@@ -4,6 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getAuthMethods } from "../../api/client";
 import { Spinner } from "../utils/spinner";
 
+import "./providers.css";
+
 export function Providers() {
   const { data, isLoading } = useQuery({
     queryKey: ["providers"],
@@ -11,7 +13,7 @@ export function Providers() {
   });
 
   return (
-    <>
+    <div className="providers">
       {isLoading ? (
         <Spinner />
       ) : (
@@ -22,6 +24,6 @@ export function Providers() {
           />
         ))
       )}
-    </>
+    </div>
   );
 }
