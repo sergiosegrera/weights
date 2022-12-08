@@ -7,25 +7,23 @@ import { Spinner } from "../utils/spinner";
 import "./providers.css";
 
 export function Providers() {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["providers"],
     queryFn: getAuthMethods,
   });
 
   return (
     <div className="providers">
-      {isLoading ? (
-        <Spinner />
-      ) : data.authProviders.length > 0 ? (
+      {isLoading && <Spinner />}
+      {!isLoading &&
+        data.authProviders.length > 0 &&
         data.authProviders.map((provider) => (
           <Provider
             provider={provider}
             redirectUrl={window.location.href + "app"}
           />
-        ))
-      ) : (
-        <h2>Sorry, it is not possible to login at the moment</h2>
-      )}
+        ))}
+      {isError && <h2>Sorry, it is not possible to login at the moment</h2>}
     </div>
   );
 }

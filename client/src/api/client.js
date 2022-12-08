@@ -64,19 +64,21 @@ export async function deleteSet({ id }) {
   return await client.collection("sets").delete(id);
 }
 
+// TODO: Refactor
 export async function getSetsCSV() {
   const data = await client
     .collection("sets")
-    .getFullList(200, { expand: "exercise" });
+    .getFullList(200, { expand: "exercise", $autoCancel: false });
 
   let csv =
     "data:text/csv;charset=utf-8,Exercise,Time,Color,Repetitions,Weight\n";
+
   data.forEach(
     (set) =>
-      (csv += `${set.expand.exercise.name},${set.created},${getColorName(
+      (csv += `"${set.expand.exercise.name}","${set.created}","${getColorName(
         set.expand.exercise.color
-      )},${set.repetitions},${set.weight}\n`)
+      )}",${set.repetitions},${set.weight}\n`)
   );
 
-  return csv;
+  return encodeURI(csv);
 }

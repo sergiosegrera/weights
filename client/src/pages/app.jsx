@@ -13,11 +13,14 @@ import { Menu } from "../components/menu";
 import { Spinner } from "../components/utils/spinner";
 import { get } from "../utils/ls";
 
+// TODO: Refactor this component,
+// Perhaps use query keys?
+// https://react-query-v3.tanstack.com/guides/query-keys
 export function AppPage() {
   const [authenticated, setAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [params] = useSearchParams();
+  const [params, setParams] = useSearchParams();
 
   useEffect(async () => {
     if (isAuthValid()) {
@@ -41,8 +44,11 @@ export function AppPage() {
         setIsLoading(false);
         return;
       }
-
+      // Update user profile
       updateUser(result.record.id, { avatarUrl: result.meta.avatarUrl });
+      // Clear search params
+      setParams(params.forEach((_, key) => params.delete(key)));
+
       setAuthenticated(true);
     }
     setIsLoading(false);
@@ -53,7 +59,7 @@ export function AppPage() {
       redirect("/");
     }
   }, [authenticated]);
-  // TODO: Redirect on failed login? Show Error?
+
   return (
     <>
       {!isLoading && authenticated && (
