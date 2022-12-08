@@ -1,0 +1,203 @@
+:root {
+  --blue: #73a2ff;
+  --green: #73ffbc;
+  --yellow: #fcff73;
+  --orange: #ffae73;
+  --red: #ff7373;
+  --grey: #969696;
+  --light-grey: #d9d9d9;
+}
+
+html {
+  font-family: "Jost", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+input,
+select {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a:hover {
+  color: grey;
+}
+
+#app {
+  width: 80%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-regular {
+  font-weight: 400;
+}
+
+.text-s {
+  font-size: 18px;
+}
+
+.text-m {
+  font-size: 24px;
+}
+
+.text-l {
+  font-size: 64px;
+}
+
+.text-grey {
+  color: var(--grey);
+}
+
+.text-blue {
+  color: var(--blue);
+}
+
+.drop-shadow {
+  box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.1);
+}
+
+.rounded {
+  border-radius: 5px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.flex-shrink {
+  flex-shrink: 1;
+}
+
+.flex-3 {
+  flex: 3;
+}
+
+.gap-s {
+  gap: 16px;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.avatar {
+  height: 48px;
+  width: 48px;
+  border-radius: 100%;
+  background-color: var(--grey);
+}
+
+.icon {
+  height: 48px;
+  width: 48px;
+}
+
+.icon-m {
+  height: 32px;
+  width: 32px;
+}
+
+.icon-s {
+  height: 24px;
+  width: 24px;
+}
+
+.margin-x-auto {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.margin-r-m {
+  margin-right: 32px;
+}
+
+.margin-y-m {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.margin-y-l {
+  margin-top: 64px;
+  margin-bottom: 64px;
+}
+
+.margin-y-xl {
+  margin-top: 128px;
+  margin-bottom: 128px;
+}
+
+.padding-s {
+  padding: 16px;
+}
+
+.padding-s-x {
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.padding-s-b {
+  padding-bottom: 16px;
+}
+
+.input {
+  flex: 1;
+  display: block;
+  background-color: var(--light-grey);
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 8px;
+  min-width: 0;
+  color: black;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.error {
+  outline: 4px solid var(--red);
+  outline-offset: 2px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  overflow: hidden;
+}

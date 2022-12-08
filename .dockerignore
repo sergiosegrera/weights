@@ -1,0 +1,5 @@
+client/dist/
+client/node_modules/
+client/.env
+server/pb_data/
+server/pb_public/
