@@ -6,6 +6,8 @@ A workout logging web application
 Created for my personal use and to test out my full-stack skills  
 Uses a Pocketbase + React stack that enables quick development
 
+[Live Preview](https://weights.sergiosegrera.com)
+
 ## Functionality
 
 - Login / Create an account
