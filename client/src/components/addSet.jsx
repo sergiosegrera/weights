@@ -45,7 +45,7 @@ export function AddSet({ backHandler }) {
           onClick={() => sets.mutate({ exercise, repetitions, weight })}
         />
       </div>
-      <div className="flex-row justify-space-between gap-s">
+      <div className="flex-row justify-space-between align-content-center gap-s">
         <select
           name="exercise"
           id="exercise"

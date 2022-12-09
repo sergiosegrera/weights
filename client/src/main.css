@@ -114,6 +114,10 @@ a:hover {
   justify-content: space-between;
 }
 
+.align-content-center {
+  align-content: center;
+}
+
 .avatar {
   height: 48px;
   width: 48px;
@@ -175,7 +179,7 @@ a:hover {
 
 .input {
   flex: 1;
-  display: block;
+  display: flex;
   background-color: var(--light-grey);
   border-radius: 5px;
   border: none;
@@ -184,6 +188,7 @@ a:hover {
   padding: 8px;
   min-width: 0;
   color: black;
+  appearance: none;
 }
 
 .input:focus {
